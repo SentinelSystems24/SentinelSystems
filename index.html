@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel Systems | Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="Sentinel-Systems.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Sentinel-Systems.png" alt="Community Logo">
+        </div>
+        <h1>Sentinel Systems</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="team.html">Team</a>
+        <a href="applications.html">Applications</a>
+        <a href="feedback.html">Feedback</a>
+        <a href="admin.html" class="admin">Admin</a>
+    </nav>
+    <div class="container">
+        <section class="home">
+            <div class="welcome">
+                <img src="Sentinel-Systems.png" alt="Community Logo" class="welcome-logo">
+                <h2>Protecting your Communities, at no cost!</h2>
+                <div class="buttons">
+                    <a href="#" class="button"><i class="fab fa-discord"></i> Join our Discord</a>
+                    <a href="https://discord.com/oauth2/authorize?client_id=1254417774902771745&permissions=8&integration_type=0&scope=bot" class="button"><i class="fab fa-discord"></i> Invite Sentinel Systems</a>
+                </div>
+            </div>
+        </section>
+        <section class="about">
+            <h2>About Sentinel Systems</h2>
+            <p>
+                Welcome to Sentinel Systems, your premier solution for safeguarding Discord servers from rule breakers and community risks. Our Discord bot is designed to ensure a safe and secure environment for all members by leveraging an extensive database and a robust system. Whether you're a server owner or a community member, Sentinel Systems offers unparalleled protection and peace of mind.
+            </p>
+            <p>
+                At Sentinel Systems, we understand the importance of maintaining a harmonious community. Our bot is equipped with advanced features to detect and prevent disruptive behavior, ensuring that your server remains a welcoming place for everyone. From automated moderation to comprehensive logging, our system is built to handle the complexities of modern-day community management.
+            </p>
+            <p>
+                Our extensive database is continuously updated to keep up with the latest trends and threats, allowing us to offer real-time protection against new and emerging risks. With Sentinel Systems, you can trust that your community is protected by cutting-edge technology and a team dedicated to creating a safer online space.
+            </p>
+            <p>
+                Join the countless Discord servers that have already benefited from Sentinel Systems. Experience the peace of mind that comes with knowing your community is in good hands. Together, we can create a safer and more enjoyable online experience for everyone.
+            </p>
+        </section>
+        </div>
+        
+        <!-- Frequently Asked Questions Section -->
+        <div class="container">
+        <section class="faq">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>What is Sentinel Systems?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Sentinel Systems is a Discord bot designed to protect Discord servers from rule breakers and community risks using an extensive database and robust system.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How does Sentinel Systems protect my server?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Our bot uses advanced features to detect and prevent disruptive behavior, offering automated moderation, comprehensive logging, and real-time updates to protect against new and emerging risks.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>Is Sentinel Systems free to use?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, Sentinel Systems is completely free to use, providing protection for your community without any cost.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How can I invite Sentinel Systems to my server?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>You can invite Sentinel Systems to your server by clicking the "Invite Sentinel Systems" button on our homepage or through the Discord bot invite link.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <h3>How do I get support for Sentinel Systems?</h3>
+                </div>
+                <div class="faq-answer">
+                    <p>For support, you can join our Discord community by clicking the "Join our Discord" button on our homepage. Our team is always ready to help you.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 Sentinel Systems. All rights reserved.</p>
+    </footer>
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', () => {
+                const answer = item.nextElementSibling;
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                } else {
+                    answer.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
