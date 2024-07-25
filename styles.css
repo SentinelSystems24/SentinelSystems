@@ -664,3 +664,61 @@ footer {
         transform: translate3d(0, 0, 0);
     }
 }
+
+
+/* Media Queries for Responsiveness */
+
+/* Large screens and up */
+@media (min-width: 1200px) {
+    .team-member {
+        flex: 1 1 calc(20% - 2rem);
+        max-width: calc(20% - 2rem);
+    }
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .team-member {
+        flex: 1 1 calc(33.33% - 2rem);
+        max-width: calc(33.33% - 2rem);
+    }
+    .partner {
+        flex: 1 1 calc(50% - 2rem);
+        max-width: calc(50% - 2rem);
+    }
+}
+
+/* Small screens */
+@media (max-width: 767px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    .header .logo img {
+        height: 40px;
+    }
+    nav a {
+        padding: 0.5rem 1rem;
+        margin: 0 0.2rem;
+    }
+    .container {
+        padding: 1rem;
+    }
+    .welcome h2 {
+        font-size: 2rem;
+    }
+    .buttons {
+        flex-direction: column;
+    }
+    .button {
+        margin-bottom: 0.5rem;
+        width: 100%;
+    }
+    .team-member {
+        flex: 1 1 calc(100% - 2rem);
+        max-width: calc(100% - 2rem);
+    }
+    .partner {
+        flex: 1 1 calc(100% - 2rem);
+        max-width: calc(100% - 2rem);
+    }
+}
