@@ -7,6 +7,37 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="Sentinel-Systems.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS for dropdowns */
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .partner-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .partner-logo {
+            width: 100px;
+            height: auto;
+        }
+        .button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #7289da;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .button:hover {
+            background-color: #5b6eae;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -16,9 +47,9 @@
         <h1>Partners</h1>
     </header>
     <nav>
-        <a href="index">Home</a>
-        <a href="team">Team</a>
-        <a href="applications">Applications</a>
+        <a href="index.html">Home</a>
+        <a href="team.html">Team</a>
+        <a href="applications.html">Applications</a>
     </nav>
     <div class="container">
         <h2 class="container-title">Sentinel Partners</h2>
@@ -27,7 +58,7 @@
             <section class="partner">
                 <div class="sentinel-partner">
                     <div class="partner-info">
-                        <img src="partners/River-Dev.png" alt="Partner" class="partner-logo">
+                        <img src="partners/River-Dev.png" alt="River Development" class="partner-logo">
                         <div class="partner-details">
                             <h3>River Development</h3>
                             <h5>Partner since 23rd June 2024</h5>
@@ -35,19 +66,25 @@
                         <i class="fas fa-chevron-down arrow"></i>
                     </div>
                     <div class="dropdown-content">
-                        <p>What is River Development?
-                            River Development is a community that ensures all products that are put out are of high quality, completely de-bugged and efficient. We provide users with the highest quality advanced scripts, we also have the option for users to download completely free scripts from our site. Our code is clean and easily configurable with a professional layout.
-                            
-                            We attempt to provide the best customer service and provide users that would like a custom commission to be made within a very short space of time.
-                            
-                            Here is what we provide:
-                            Fast and Friendly Service.
-                            Custom Script Commissions.
-                            Good ratio between paid, and free products.
-                            Frequent giveaways on new products.
-                            
-                            We hope to see you join and check out the community!</p>
+                        <p>River Development is a community that ensures all products are high quality, de-bugged, and efficient. We offer advanced scripts, free products, and more.</p>
                         <a href="https://discord.gg/HMKytJDM9u" class="button"><i class="fab fa-discord"></i> Join Discord</a>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="partner">
+                <div class="sentinel-partner">
+                    <div class="partner-info">
+                        <img src="partners/S1RP.png" alt="Signal 1 Roleplay" class="partner-logo">
+                        <div class="partner-details">
+                            <h3>Signal 1 Roleplay</h3>
+                            <h5>Partner since 08th September 2024</h5>
+                        </div>
+                        <i class="fas fa-chevron-down arrow"></i>
+                    </div>
+                    <div class="dropdown-content">
+                        <p>Signal 1 Roleplay offers a high-quality roleplaying environment, focusing on realism and engaging experiences in law enforcement, emergency services, and more.</p>
+                        <a href="https://discord.gg/8rjp8PW6cv" class="button"><i class="fab fa-discord"></i> Join Discord</a>
                     </div>
                 </div>
             </section>
@@ -63,16 +100,19 @@
             partner.addEventListener('click', () => {
                 const dropdown = partner.querySelector('.dropdown-content');
                 const arrow = partner.querySelector('.arrow');
-                if (dropdown.style.maxHeight) {
-                    dropdown.style.maxHeight = null;
+                const isOpen = dropdown.style.maxHeight;
+
+                // Close all dropdowns first
+                document.querySelectorAll('.dropdown-content').forEach(content => {
+                    content.style.maxHeight = null;
+                });
+                document.querySelectorAll('.arrow').forEach(arrow => {
                     arrow.classList.remove('fa-chevron-up');
                     arrow.classList.add('fa-chevron-down');
-                } else {
-                    document.querySelectorAll('.dropdown-content').forEach(content => content.style.maxHeight = null);
-                    document.querySelectorAll('.arrow').forEach(arrow => {
-                        arrow.classList.remove('fa-chevron-up');
-                        arrow.classList.add('fa-chevron-down');
-                    });
+                });
+
+                // Toggle the clicked one
+                if (!isOpen) {
                     dropdown.style.maxHeight = dropdown.scrollHeight + "px";
                     arrow.classList.remove('fa-chevron-down');
                     arrow.classList.add('fa-chevron-up');
