@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sentinel Systems</title>
+    <link rel="icon" href="Sentinel-Systems.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Extra Styles for the dashboard */
+        body {
+            background-color: #0d1117;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+        }
+
+        .dashboard-container {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(135deg, #0d1117, #1b1b1b);
+        }
+
+        .dashboard-title {
+            font-size: 36px;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #3fa4ff;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-items: center;
+            padding: 0 20px;
+        }
+
+        .team-card {
+            background-color: #1b1b1b;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-card img {
+            border-radius: 50%;
+            margin-bottom: 20px;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 2px solid #3fa4ff;
+        }
+
+        .team-card h3 {
+            color: #fff;
+            font-size: 22px;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .team-card:hover h3 {
+            color: #3fa4ff;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            background-color: #3fa4ff;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .add-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #3fa4ff;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .add-btn:hover {
+            background-color: #5865f2;
+            transform: scale(1.05);
+        }
+
+        .footer {
+            background-color: #1b1b1b;
+            padding: 20px 0;
+            text-align: center;
+            color: #ccc;
+            position: relative;
+        }
+
+        .footer p {
+            font-size: 14px;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease forwards;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            .dashboard-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="brand">Sentinel Systems</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="/login" id="login-btn" class="login-btn">Login with Discord</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="dashboard-container fade-in">
+        <h2 class="dashboard-title">Your Guilds</h2>
+        <div id="guilds" class="team-grid"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Sentinel Systems. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Discord OAuth2 Add Bot URL
+        const clientId = '1254417774902771745'; // Replace with your actual Discord client ID
+        const permissions = '8'; // Administrator permission
+        const redirectUri = encodeURIComponent('http://localhost:3000/callback'); // Replace with your actual callback URL
+
+        // Function to generate the Discord invite URL
+        function generateInviteUrl(guildId) {
+            return `https://discord.com/oauth2/authorize?client_id=${clientId}&scope=bot&permissions=${permissions}&guild_id=${guildId}&response_type=code&redirect_uri=${redirectUri}`;
+        }
+
+        // Fetch guilds and display them
+        fetch('/guilds')
+            .then(response => response.json())
+            .then(guilds => {
+                const guildsContainer = document.getElementById('guilds');
+
+                guilds.forEach(guild => {
+                    const guildCard = document.createElement('div');
+                    guildCard.classList.add('team-card');
+                    guildCard.classList.add('fade-in'); // Add fade-in class
+                    guildCard.innerHTML = `
+                        <img src="${guild.icon}" alt="${guild.name}">
+                        <h3>${guild.name}</h3>
+                        ${guild.botInGuild ? '<span class="badge">SYSTEM</span>' : ''}
+                        ${!guild.botInGuild ? `<a href="${generateInviteUrl(guild.id)}" class="add-btn">Add to Server</a>` : ''}
+                    `;
+                    guildsContainer.appendChild(guildCard);
+                });
+            })
+            .catch(error => console.log(error));
+
+        fetch('/user-data')
+            .then(response => response.json())
+            .then(user => {
+                if (user.username) {
+                    document.getElementById('login-btn').innerText = 'Logged in: ' + user.username;
+                    document.getElementById('login-btn').href = '/profile';
+
+                    // Add "Dashboard" to the navbar
+                    const navLinks = document.querySelector('.nav-links');
+                    const dashboardLink = document.createElement('li');
+                    dashboardLink.innerHTML = '<a href="/dashboard">Dashboard</a>';
+                }
+            })
+            .catch(error => console.log(error));
+    </script>
+</body>
+</html>

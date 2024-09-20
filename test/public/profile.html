@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Your Profile - Sentinel Systems</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="Sentinel-Systems.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="brand">Sentinel Systems</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="#">Bot Invite</a></li>
+                <li><a href="/logout" class="login-btn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Profile Section -->
+    <section class="profile-section">
+        <div class="container">
+            <div class="profile-card">
+                <img id="avatar" src="" alt="Profile Avatar" class="profile-avatar">
+                <h2 id="username">Username</h2>
+                <p id="createdAt">Account Created: </p>
+                <p>Rank: Member</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sentinel Systems. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Fetch the user data and populate the profile page
+        fetch('/user-data')
+            .then(response => response.json())
+            .then(user => {
+                if (user.username) {
+                    document.getElementById('username').innerText = user.username;
+                    document.getElementById('avatar').src = user.avatarUrl;
+    
+                    // Format the account creation date
+                    const createdAt = new Date(user.createdAt * 1000);  // Convert UNIX to milliseconds
+                    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    document.getElementById('createdAt').innerText = 'Account Created: ' + createdAt.toLocaleDateString('en-US', options);
+    
+                    // Check the user's roles in the guild
+                    fetch(`/user-roles?userId=${user.id}`)
+                        .then(response => response.json())
+                        .then(roles => {
+                            let rank = 'Member'; // Default rank
+                            const specificGuildId = '1254452977239064577'; // Replace with your actual guild ID
+                            const specificRoleId = '1255856511104585748'; // Replace with your actual role ID
+    
+                            // Check if the user has the specific role in the specified guild
+                            const userRoleInGuild = roles.find(role => role.guildId === specificGuildId && role.roleId === specificRoleId);
+                            if (userRoleInGuild) {
+                                rank = 'Chief Executive Officer'; // Change this to whatever rank you want to display
+                            }
+    
+                            // Update the rank in the profile
+                            document.querySelector('.profile-card p').innerText = 'Rank: ' + rank;
+                        })
+                        .catch(error => console.log(error));
+                }
+            })
+            .catch(error => console.log(error));
+    </script>
+    
+
+</body>
+</html>
