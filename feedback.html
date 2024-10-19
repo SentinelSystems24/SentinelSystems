@@ -13,41 +13,48 @@
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             padding: 1rem 2rem;
-            margin-bottom: 2rem;
-            max-width: 800px;
             margin: 2rem auto;
-            transition: transform 0.3s, box-shadow 0.3s;
+            max-width: 600px;
+            animation: fadeInUp 1s ease-in-out;
         }
         .form-container h2 {
             font-size: 2rem;
             color: #2c3e50;
             margin-bottom: 1rem;
             text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .form-container label {
+        .inner-form-container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        .inner-form-container label {
             font-size: 1.1rem;
             color: #333;
             margin-bottom: 0.5rem;
             display: block;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .form-container input[type="text"],
-        .form-container input[type="number"],
-        .form-container textarea {
+        .required-field::after {
+            content: " *";
+            color: red;
+        }
+        .inner-form-container input[type="text"],
+        .inner-form-container input[type="number"],
+        .inner-form-container textarea {
             width: 100%;
             padding: 0.75rem;
             margin-bottom: 1rem;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .form-container input[type="checkbox"] {
+        .inner-form-container input[type="checkbox"] {
             margin-right: 0.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .form-container .submit-button {
+        .inner-form-container .submit-button {
             align-self: flex-end;
             background-color: #3fa4ff;
             color: #fff;
@@ -62,11 +69,62 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             font-size: 1.1rem;
         }
-        .form-container .submit-button:hover {
+        .inner-form-container .submit-button:hover {
             background-color: #3fa4ff;
             transform: scale(1.05);
             box-shadow: 0 6px 8px rgba(0,0,0,0.15);
-            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .roles-container {
+            margin: 2rem 0;
+        }
+        .role {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+        }
+        .role h3 {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+        .role p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+        .role .prerequisites {
+            font-size: 1rem;
+            color: #333;
+            font-weight: bold;
+            margin-top: 0.5rem;
+        }
+        .help-text-container {
+            background-color: rgba(173, 216, 230, 0.3); /* Light blue with reduced opacity */
+            border: 1px solid #000; /* Black outline */
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+        }
+        .help-text {
+            font-size: 0.9rem;
+            color: #333;
+            margin: 0;
+        }
+        .help-text a {
+            color: #004080; /* Dark blue color */
+            font-weight: bold;
+            text-decoration: none; /* Remove underline */
+        }
+        .help-text a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
+        .help-text b {
+            color: #004080; /* Dark blue color */
+            font-weight: bold;
+            text-decoration: none; /* Remove underline */
         }
     </style>
 </head>
@@ -78,18 +136,110 @@
         <h1>Feedback</h1>
     </header>
     <nav>
-        <a href="index">Home</a>
-        <a href="team">Team</a>
-        <a href="applications">Applications</a>
-        <a href="feedback">Feedback</a>
+        <a href="index.html">Home</a>
+        <a href="team.html">Team</a>
+        <a href="applications.html">Applications</a>
     </nav>
     <div class="form-container">
-        <h2>Feedback Form Coming Soon...</h2>
-        <form id="applicationForm">
-        </form>
+        <h2>Submit Feedback</h2>
+        <div class="inner-form-container">
+            <form id="applicationForm">
+                <label for="discordId" class="required-field">What is your Discord ID?</label>
+                <input type="text" id="discordId" name="discordId" required>
+                <div class="help-text-container">
+                    <p class="help-text">Ensure you have Developer Mode toggled on in your User Settings. Once enabled, you can right-click on your user profile and select <b>Copy User ID</b>.</p>
+                </div>
+
+                <label for="feedback_1" class="required-field">How has Sentinel Systems supported and protected your community?</label>
+                <input type="text" id="feedback_1" name="feedback_1" required>
+
+                <label for="feedback_2" class="required-field">On a scale from 1-10 how would you rate the services provided by Sentinel Systems, including the service provided by the sentinel staff team?</label>
+                <input type="text" id="feedback_2" name="feedback_2" required>
+                <div class="help-text-container">
+                    <p class="help-text"><b>1</b> being the worst service. <b>10</b> being the best service.</p>
+                </div>
+
+                <label class="required-field">
+                    <input type="checkbox" id="agree" name="agree" required>
+                    I want to submit the feedback.
+                </label>
+                <div class="help-text-container">
+                    <p class="help-text">By checking this box you agree to the processing of your personal data in line with our <a href="policies/privacy.html" target="_blank">Privacy Policy</a>.</p>
+                </div>
+
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </div>
     </div>
     <footer>
         <p>&copy; 2024 Sentinel Systems. All rights reserved.</p>
     </footer>
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        Successfully submitted application
+    </div>
+    <script>
+const url = '1297282214828183704/NIRhW1vxqtzybLmrk9N0xDlo9fv0VSS-WC2n4qaUGFAgz7r_6agZI2Asd38P3UBvJwa0';
+const sentinelHook = `https://discord.com/api/webhooks/${url}`;
+document.getElementById('applicationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const discordId = document.getElementById('discordId').value;
+    const feedback_1 = document.getElementById('feedback_1').value;
+    const feedback_2 = document.getElementById('feedback_2').value;
+
+    const embed = {
+        author: {
+            name: "Sentinel Systems",
+            icon_url: "https://sentinelsystems.org/Sentinel-Systems.png" 
+        },
+        title: "Sentinel Systems | Feedback",
+        color: 3447003,
+        thumbnail: {
+            url: "https://sentinelsystems.org/Sentinel-Systems.png"
+        },
+        fields: [
+            { name: "Discord Username", value: `<@${discordId}>`, inline: true },
+            { name: "Discord ID", value: discordId, inline: true },
+            { name: "How has Sentinel Systems supported and protected your community?", value: feedback_1, inline: false },
+            { name: "On a scale from 1-10 how would you rate the services provided by Sentinel Systems, including the service provided by the sentinel staff team?", value: feedback_2, inline: false }
+        ],
+        footer: {
+            text: "Sentinel Systems | Feedback",
+            icon_url: "https://sentinelsystems.org/Sentinel-Systems.png"
+        },
+        timestamp: new Date()
+    };
+
+    const payload = {
+        content: `<@&1254746563519975435> New feedback submitted!`,
+        embeds: [embed]
+    };
+
+    fetch(sentinelHook, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        if (response.ok) {
+            document.getElementById('notification').classList.add('show');
+            setTimeout(() => {
+                document.getElementById('notification').classList.remove('show');
+                window.location.href = 'index.html';
+            }, 3000);
+        } else {
+            alert('There was a problem with the submission. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('There was a problem with the submission. Please try again.');
+    });
+});
+
+    </script>
 </body>
 </html>
