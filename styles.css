@@ -684,6 +684,35 @@ table tbody tr:last-of-type {
     margin-bottom: 1rem;
 }
 
+.additional-navigation .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.additional-navigation .button {
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.additional-navigation .button:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.additional-navigation .button:active {
+    transform: scale(0.98);
+    background-color: #1c6c99;
+}
+
 /* New Statistics section styles */
 .statistics {
     display: flex;
