@@ -3,364 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sentinel Systems | Feedback</title>
+    <title>Sentinel Systems | 502</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" href="Sentinel-Systems.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <meta property="og:title" content="Sentinel Systems">
-    <meta property="og:description" content="Protecting your Communities, at no cost!">
-    <meta property="og:image" content="Sentinel-Systems.png">
-    <meta property="og:url" content="https://sentinelsystems.org/feedback">
-    <meta name="theme-color" content="#3fa4ff">
     <style>
-        .form-container {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             background-color: #f4f4f9;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            padding: 1rem 2rem;
-            margin: 2rem auto;
-            max-width: 600px;
-            animation: fadeInUp 1s ease-in-out;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            animation: fadeIn 0.8s ease-in-out;
         }
-        .form-container h2 {
-            font-size: 2rem;
-            color: #2c3e50;
-            margin-bottom: 1rem;
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .container {
             text-align: center;
-        }
-        .inner-form-container {
             background-color: #ffffff;
-            border-radius: 10px;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-top: 1rem;
-            margin-bottom: 1rem;
+            padding: 3rem 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 15px;
+            animation: popUp 0.8s ease-in-out;
         }
-        .inner-form-container label {
-            font-size: 1.1rem;
-            color: #333;
-            margin-bottom: 0.5rem;
-            display: block;
+
+        @keyframes popUp {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
         }
-        .required-field::after {
-            content: " *";
-            color: red;
-        }
-        .inner-form-container input[type="text"],
-        .inner-form-container input[type="number"],
-        .inner-form-container input[type="text"] {
-    width: 100%; 
-    padding: 0.75rem; 
-    margin-bottom: 1rem; 
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
-    font-size: 1rem;
-    line-height: 1.5; /* Ensures text is well-aligned */
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle inset shadow */
-    transition: border-color 0.3s ease-in-out;
-}
 
-/* Focus Effect */
-.inner-form-container input[type="text"]:focus {
-    border-color: #2563eb; /* Highlight border */
-    outline: none; /* Remove default focus outline */
-    box-shadow: 0 0 8px rgba(37, 99, 235, 0.4); /* Subtle glow effect */
-}
-
-/* Styling for textarea feedback fields */
-.inner-form-container textarea {
-    width: 100%;
-    padding: 1rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    resize: vertical; /* Allow vertical resizing only */
-    line-height: 1.5;
-    min-height: 3rem;
-    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease-in-out;
-}
-
-.inner-form-container textarea:focus {
-    border-color: #2563eb;
-    outline: none;
-    box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
-}
-
-
-        .inner-form-container input[type="checkbox"] {
-            margin-right: 0.5rem;
-        }
-        .inner-form-container .submit-button {
-    align-self: flex-end;
-    background-color: #2563eb; /* Modern deep blue */
-    color: #ffffff;
-    border: none;
-    padding: 0.75rem 1.75rem; /* Balanced padding for better spacing */
-    border-radius: 8px; /* Slight rounding for a modern look */
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center content horizontally */
-    gap: 0.5rem; /* Space between text and icon */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Softer shadow */
-    font-size: 1.1rem;
-    font-weight: 600; /* Medium weight for emphasis */
-}
-
-/* Hover Effect */
-.inner-form-container .submit-button:hover {
-    background-color: #1e40af; /* Darker blue for hover feedback */
-    transform: scale(1.05); /* Subtle zoom effect */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
-}
-
-/* Focus State */
-.inner-form-container .submit-button:focus {
-    outline: 2px solid #93c5fd; /* Light blue focus ring for accessibility */
-    outline-offset: 2px;
-}
-
-/* Disabled State */
-.inner-form-container .submit-button:disabled {
-    background-color: #9ca3af; /* Neutral gray for disabled state */
-    cursor: not-allowed;
-    box-shadow: none;
-    transform: none;
-}
-        .roles-container {
-            margin: 2rem 0;
-        }
-        .role {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 1rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            margin-bottom: 1rem;
-        }
-        .role h3 {
-            font-size: 1.5rem;
+        h1 {
+            font-size: 5rem;
             color: #2c3e50;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.1rem;
         }
-        .role p {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 0.5rem;
+
+        p {
+            font-size: 1.3rem;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+            line-height: 1.6;
         }
-        .role .prerequisites {
-            font-size: 1rem;
-            color: #333;
-            font-weight: bold;
-            margin-top: 0.5rem;
+
+        .logo {
+            width: 80px;
+            margin-bottom: 1rem;
         }
-       /* Container styling for help text */
-.help-text-container {
-    background-color: rgba(240, 248, 255, 0.8); /* Light, subtle blue tone */
-    border: 1px solid #d1d5db; /* Light gray border for a softer look */
-    border-radius: 8px; /* Slightly rounded corners for a modern look */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    padding: 1rem 1.25rem;
-    margin-top: -0.5rem;
-    margin-bottom: 1rem;
-}
 
-/* Base text styling */
-.help-text {
-    font-size: 0.95rem; /* Slightly larger text for readability */
-    color: #4b5563; /* Neutral dark gray for better contrast */
-    line-height: 1.5; /* Improved line height for better readability */
-    margin: 0;
-}
+        a {
+            display: inline-block;
+            background-color: #3fa4ff;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-/* Anchor links styling */
-.help-text a {
-    color: #1d4ed8; /* Vibrant blue for modern look */
-    font-weight: 600; /* Medium weight for emphasis */
-    text-decoration: none; /* No underline by default */
-    transition: color 0.2s ease-in-out; /* Smooth transition effect */
-}
+        a:hover {
+            background-color: #2c3e50;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
 
-.help-text a:hover {
-    text-decoration: underline; /* Underline on hover for interactivity */
-    color: #0f172a; /* Darker blue on hover for better feedback */
-}
-
-/* Bold text (for inline emphasis) */
-.help-text b {
-    color: #0f172a; /* Deep blue for emphasis */
-    font-weight: 600; /* Medium weight */
-}
-
-/* Inline warning or critical text styling */
-.help-text c {
-    color: #b91c1c; /* Red color for warnings or important notices */
-    font-weight: 600; /* Medium weight for emphasis */
-}
-/* Checkbox container for improved alignment */
-.checkbox-container {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-    padding: 0.5rem 0;
-}
-
-/* Styled checkbox input */
-.checkbox-container input[type="checkbox"] {
-    width: 1.2rem;
-    height: 1.2rem;
-    accent-color: #2563eb; /* Use modern blue for checkbox */
-    border: 1px solid #ccc;
-    border-radius: 4px; /* Slight rounding for aesthetics */
-    cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Checkbox hover effect */
-.checkbox-container input[type="checkbox"]:hover {
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    transform: scale(1.05); /* Slight zoom on hover */
-}
-
-/* Checkbox focus state */
-.checkbox-container input[type="checkbox"]:focus {
-    outline: 2px solid #93c5fd;
-    outline-offset: 2px;
-}
-
-/* Label next to checkbox */
-.checkbox-container label {
-    font-size: 1rem;
-    color: #333;
-    cursor: pointer;
-    line-height: 1.5;
-}
-
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 3rem;
+            }
+            p {
+                font-size: 1.1rem;
+            }
+            a {
+                font-size: 1rem;
+                padding: 0.75rem 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">
-            <img src="Sentinel-Systems.png" alt="Community Logo">
-        </div>
-        <h1>Feedback</h1>
-    </header>
-    <nav>
-        <a href="index">Home</a>
-        <a href="team">Team</a>
-        <a href="applications">Applications</a>
-    </nav>
-    <div class="form-container">
-        <h2>Submit Feedback</h2>
-        <div class="inner-form-container">
-            <form id="applicationForm">
-                <label for="discordId">What is your Discord ID?</label>
-                <input type="text" id="discordId" name="discordId">                
-                <div class="help-text-container">
-                    <p class="help-text"><c>If you wish to submit an anonymous review, please leave this field blank.</c></p>
-                </div>
-                <div class="help-text-container">
-                    <p class="help-text">Ensure you have Developer Mode toggled on in your User Settings. Once enabled, you can right-click on your user profile and select <b>Copy User ID</b>.</p>
-                </div>
-
-                <label for="feedback_1" class="required-field">How has Sentinel Systems supported and protected your community?</label>
-                <textarea id="feedback_1" name="feedback_1" rows="4" required></textarea>
-                
-                <label for="feedback_2" class="required-field">On a scale from 1-10 how would you rate the services provided by Sentinel Systems, including the service provided by the sentinel staff team?</label>
-                <textarea id="feedback_2" name="feedback_2" rows="2" required></textarea>                
-                <div class="help-text-container">
-                    <p class="help-text"><b>1</b> being the worst service. <b>10</b> being the best service.</p>
-                </div>
-
-                <div class="checkbox-container">
-                    <input type="checkbox" id="agree" name="agree" required>
-                    <label for="agree">I want to submit the feedback.</label>
-                </div>
-                <div class="help-text-container">
-                    <p class="help-text">
-                        By checking this box, you agree to the processing of your personal data in line with our 
-                        <a href="policies/privacy" target="_blank">Privacy Policy</a>.
-                    </p>
-                </div>
-                
-
-                <button type="submit" class="submit-button">Submit</button>
-            </form>
-        </div>
+    <div class="container">
+        <h1>502</h1>
+        <p>Feedback form has moved to our discord.</p>
+        <a href="index">Return to Home</a>
     </div>
-    <footer>
-        <p>&copy; 2024 Sentinel Systems. All rights reserved.</p>
-    </footer>
-    <div class="notification" id="notification">
-        <i class="fas fa-check-circle"></i>
-        Successfully submitted form
-    </div>
-    <script>
-const url = '1297596236802560121/q51F4UrGS13FbA8AeC1l2zTq_rO8OSI6dTDmG6BFtswqYdNmK1QMZuwEHu9FurWeJ32N';
-const sentinelHook = `https://discord.com/api/webhooks/${url}`;
-document.getElementById('applicationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const discordId = document.getElementById('discordId').value;
-    const feedback_1 = document.getElementById('feedback_1').value;
-    const feedback_2 = document.getElementById('feedback_2').value;
-
-    const embed = {
-        author: {
-            name: "Sentinel Systems",
-            icon_url: "https://sentinelsystems.org/Sentinel-Systems.png" 
-        },
-        title: "Sentinel Systems | Feedback",
-        color: 3447003,
-        thumbnail: {
-            url: "https://sentinelsystems.org/Sentinel-Systems.png"
-        },
-        fields: [
-            { name: "Discord Username", value: discordId ? `<@${discordId}>` : `Anonymous Review`, inline: true },
-            { name: "Discord ID", value: discordId ? discordId : `Anonymous Review`, inline: true },
-            { name: "How has Sentinel Systems supported and protected your community?", value: feedback_1, inline: false },
-            { name: "On a scale from 1-10 how would you rate the services provided by Sentinel Systems, including the service provided by the sentinel staff team?", value: feedback_2, inline: false }
-        ],
-        footer: {
-            text: "Sentinel Systems | Feedback",
-            icon_url: "https://sentinelsystems.org/Sentinel-Systems.png"
-        },
-        timestamp: new Date()
-    };
-
-    const payload = {
-        content: ``,
-        embeds: [embed]
-    };
-
-    fetch(sentinelHook, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-    })
-    .then(response => {
-        if (response.ok) {
-            document.getElementById('notification').classList.add('show');
-            setTimeout(() => {
-                document.getElementById('notification').classList.remove('show');
-                window.location.href = 'index';
-            }, 3000);
-        } else {
-            alert('There was a problem with the submission. Please try again.');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('There was a problem with the submission. Please try again.');
-    });
-});
-
-    </script>
 </body>
 </html>
