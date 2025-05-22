@@ -347,6 +347,17 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.team-honorarymember {
+  background: #172a45;
+  border-radius: 14px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  width: 230px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  color: #cbd5e1; /* light grey */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
 .team-member:hover {
   transform: translateY(-6px);
 }
@@ -374,6 +385,38 @@ body {
 }
 
 .team-member h5 {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #64748b;
+}
+
+.team-honorarymember:hover {
+  transform: translateY(-6px);
+}
+
+.team-honorarymember img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.team-honorarymember h3 {
+  font-size: 1.3rem;
+  margin: 0.25rem 0;
+  color: #e0e7ff;
+  font-weight: 600;
+}
+
+.team-honorarymember h4 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-bottom: 0.5rem;
+}
+
+.team-honorarymember h5 {
   font-size: 0.85rem;
   font-weight: 400;
   color: #64748b;
